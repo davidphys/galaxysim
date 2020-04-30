@@ -56,16 +56,16 @@ int main(){
     //Set the cursor at the origin
     pman.setCursorPosition(0,0,0);
     //Create a slowly rotating disk
-    pman.placeDisk(nparticles,1.0,1.2);
+    pman.placeBall(nparticles,1.0,0.6);
 
 
-    float dt=0.002;
+    float dt=0.004;
 
     for(int k=0;k<600;k++){
         for(int i=0;i<3;i++){
             integrate(pman,dt);
         }
-        pman.saveParticlesAsImage(400,400,getFilename("img/output",k,3,".bmp"),0,0,400.0/(3.0));
+        pman.saveParticlesAsImage(400,400,getFilename("img2/output",k,3,".bmp"),0,0,400.0/(3.0));
     }
     return 0;
 }

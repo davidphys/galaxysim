@@ -183,11 +183,12 @@ void ParticleManager::placeBall(int N, float radius, float angvel) {
         float px=x+(X1*e1x+X2*e2x+X3*nx)*r; 
         float py=y+(X1*e1y+X2*e2y+X3*ny)*r; 
         float pz=z+(X1*e1z+X2*e2z+X3*nz)*r; 
+        float r2=sqrt(X1*X1+X2*X2)*r;
 
         float theta=atan2(X2,X1)+1.57079633;
-        float pvx=vx+r*angvel*(cos(theta)*e1x+sin(theta)*e2x);
-        float pvy=vy+r*angvel*(cos(theta)*e1y+sin(theta)*e2y);
-        float pvz=vz+r*angvel*(cos(theta)*e1z+sin(theta)*e2z);
+        float pvx=vx+r2*angvel*(cos(theta)*e1x+sin(theta)*e2x);
+        float pvy=vy+r2*angvel*(cos(theta)*e1y+sin(theta)*e2y);
+        float pvz=vz+r2*angvel*(cos(theta)*e1z+sin(theta)*e2z);
         masses.push_back({pM,px,py,pz,pvx,pvy,pvz});
     }
 }

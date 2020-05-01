@@ -1,8 +1,9 @@
 PROJECT=program #executable file name
-CC=icpc
+
+CC=g++
 CFLAGS= -Wall -std=c++11
 DEBUGFLAGS= -g
-RELEASEFLAGS= -O3 -qopenmp
+RELEASEFLAGS= -O3 -fopenmp
 LIBS =
 
 #directories:
@@ -24,6 +25,8 @@ $(OBJSR): obj/%.o : src/%.cpp
 
 run: $(PROJECT)
 	./$(PROJECT)
+
+
 
 clean:
 	rm -f obj/*.o $(PROJECT)

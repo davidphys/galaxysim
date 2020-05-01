@@ -17,8 +17,12 @@ std::string getFilename(std::string prefix, int num, int padcount, std::string s
 }
 
 void integrate(ParticleManager &pman,float dt){
+
     //Construct the quadtree
     float x0,y0,z0,x1,y1,z1;
+
+
+
     getBounds(pman.masses,x0,y0,z0,x1,y1,z1);
     OctNode basenode(x0,y0,z0,x1,y1,z1);
     for(size_t i=0;i<pman.masses.size();i++){
@@ -61,7 +65,7 @@ int main(){
 
     float dt=0.004;
 
-    for(int k=0;k<600;k++){
+    for(int k=0;k<1;k++){
         for(int i=0;i<3;i++){
             integrate(pman,dt);
         }

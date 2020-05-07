@@ -272,7 +272,24 @@ void ParticleManager::placeGaussianDisk(int N, float sdev, float angvel){
     }
 }
 
+void ParticleManager::placeBox(int N,float xmin, float ymin, float zmin, float xmax, float ymax, float zmax,float vdispersion){
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::normal_distribution<float> dist((float)0.0,(float)1.0);
+    std::uniform_real_distribution<float> unif((float)0.0,(float)1.0);
 
+    for(int i=0;i<N;i++){
+        //First generate a random point on a circle
+        float X1=unif(mt),X2=unif(mt),X3=unif(mt);
+        float px=x+(xmax-xmin)*X1+xmin; 
+        float py=y+(ymax-ymin)*X2+ymin; 
+        float pz=z+(zmax-zmin)*X3+zmin; 
 
+        float V1=dist(mt),V2=dist(mt),V3=dist(mt);
+        float pvx=vx+V1*vdispersion;
+        float pvy=vy+V2*vdispersion;
+        float pvz=vz+V3*vdispersion;
 
-
+        masses.push_back({pM,px,py,pz,pvx,pvy,pvz});
+    }
+}

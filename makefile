@@ -1,9 +1,10 @@
-PROJECT=program #executable file name
+PROJECT=galaxysim #executable file name
 
 CC=g++
 CFLAGS= -Wall -std=c++11
 DEBUGFLAGS= -g
 RELEASEFLAGS= -O3 -fopenmp
+PROJECTOPS= -disk 100000 -nout 100 -ksteps 5 -imgdir out
 LIBS =
 
 #directories:
@@ -24,7 +25,8 @@ $(OBJSR): obj/%.o : src/%.cpp
 	$(CC) $(CFLAGS) $(RELEASEFLAGS) -I $(INCLUDE) -c $< $(LIBS) -o $@
 
 run: $(PROJECT)
-	./$(PROJECT)
+	-mkdir out
+	./$(PROJECT) $(PROJECTOPS)
 
 
 

@@ -59,5 +59,7 @@ public:
     void placeDisk(int N,float r, float angvel=0);
     //Same with a Gaussian distribution on a 2D disk
     void placeGaussianDisk(int N, float sdev, float angvel=0);
+
+    void placeBox(int N,float xmin,float ymin, float zmin, float xmax, float ymax, float zmax,float vdispersion=0.01);
 };
 #endif //PARTICLEMAN_H
